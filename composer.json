@@ -10,7 +10,11 @@
         "dedoc/scramble": "^0.13.17",
         "grazulex/laravel-apiroute": "^2.1",
         "laravel/framework": "^13.0",
+        "laravel/horizon": "^5.45",
+        "laravel/sanctum": "^4.3",
+        "laravel/telescope": "^5.20",
         "laravel/tinker": "^3.0",
+        "spatie/laravel-permission": "^7.3",
         "spatie/laravel-query-builder": "^7.1"
     },
     "require-dev": {
