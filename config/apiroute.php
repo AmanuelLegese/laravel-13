@@ -44,15 +44,14 @@ return [
             'routes' => base_path('routes/api/v1.php'),
             'middleware' => [
                 'auth:sanctum',
-                'throttle:v1',
+                'throttle:api',
                 'api.version',
                 'api.version.tracking',
                 'api.version.notifications',
                 'api.version.documentation',
                 'api.version.sunset',
                 'api.version.fallback',
-                'api.version.headers',
-                LowerCase::class
+                'api.version.headers'
             ],
             'name' => 'api.v1.',
             'status' => 'active',

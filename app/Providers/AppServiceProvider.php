@@ -27,10 +27,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // call rate limit configuration
-        $this->confugureRateLimiter();
+        $this->configureRateLimiter();
 
         // call scrumble configuration
-        $this->ConfigureScrumble();
+        $this->configureScramble();
 
         // grant super admin all permission and role
         $this->grantSuperAdmin();
@@ -40,20 +40,20 @@ class AppServiceProvider extends ServiceProvider
      * configure rate limiter
      */
 
-    private function confugureRateLimiter()
+    private function configureRateLimiter()
     {
         /**
          * for all api's
          */
         RateLimiter::for('api', function (Request $request) {
-            return RateLimiter::perMinute(60)->by($request->user()?->id ?: $request->ip());
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
 
         /**
          * for auth's
          */
         RateLimiter::for('auth', function (Request $request) {
-            return RateLimiter::perMinute(5)->by($request->ip());
+            return Limit::perMinute(5)->by($request->ip());
         });
 
         /**
@@ -70,7 +70,7 @@ class AppServiceProvider extends ServiceProvider
      * configure scramble
      */
 
-    private function ConfigureScrumble()
+    private function configureScramble()
     {
         Scramble::configure()
             ->withDocumentTransformers(function (OpenApi $openApi) {
