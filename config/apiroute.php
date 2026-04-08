@@ -42,9 +42,22 @@ return [
     'versions' => [
         'v1' => [
             'routes' => base_path('routes/api/v1.php'),
-            'middleware' => [],
+            'middleware' => [
+                'auth:sanctum',
+                'throttle:api',
+                'api.version',
+                'api.version.tracking',
+                'api.version.notifications',
+                'api.version.documentation',
+                'api.version.sunset',
+                'api.version.fallback',
+                'api.version.headers'
+            ],
             'name' => 'api.v1.',
             'status' => 'active',
+            'deprecated_at' => null,
+            'sunset_at' => null,
+            'successor' => null,
         ],
     ],
 
