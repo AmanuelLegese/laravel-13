@@ -29,11 +29,11 @@ class AppServiceProvider extends ServiceProvider
         // call rate limit configuration
         $this->configureRateLimiter();
 
-        // call scrumble configuration
-        $this->configureScramble();
-
         // grant super admin all permission and role
         $this->grantSuperAdmin();
+
+        // call scrumble configuration
+        $this->configureScramble();
     }
 
     /**
