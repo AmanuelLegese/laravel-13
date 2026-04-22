@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\PlatformEnums;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AccountRequest extends FormRequest
 {
@@ -22,7 +24,7 @@ class AccountRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'platform' => 'required',
+			'platform' => ['required',Rule::in(PlatformEnums::values())],
 			'platform_account_id' => 'required|string',
 			'account_name' => 'required|string',
 			'access_token_encrypted' => 'required|string',

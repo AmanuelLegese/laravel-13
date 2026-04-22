@@ -22,9 +22,10 @@ class PostMediaRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'post_id' => 'required',
+			'post_id' => 'required|exists:posts,id',
 			'media_type' => 'required|string',
 			'file_url' => 'required|string',
+            'platform_file_id' => 'required|string',
 			'postition' => 'required',
 			'remark' => 'string',
         ];

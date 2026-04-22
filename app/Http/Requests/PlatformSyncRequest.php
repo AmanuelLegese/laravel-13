@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\SyncStatusEnums;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PlatformSyncRequest extends FormRequest
 {
@@ -22,10 +24,10 @@ class PlatformSyncRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'post_id' => 'required',
-			'account_id' => 'required',
+			'post_id' => 'required|exists:posts,id',
+			'account_id' => 'required|exists:accounts,id',
 			'external_post_id' => 'required',
-			'sync_status' => 'required',
+			'sync_status' => ['required', Rule::in(SyncStatusEnums::values())],
 			'last_error' => 'string',
 			'remark' => 'string',
         ];

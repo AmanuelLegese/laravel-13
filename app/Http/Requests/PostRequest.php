@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\PostStatusEnums;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PostRequest extends FormRequest
 {
@@ -23,7 +25,9 @@ class PostRequest extends FormRequest
     {
         return [
 			'text' => 'required|string',
-			'post_status' => 'required',
+			'post_status' => ['required',Rule::in(PostStatusEnums::values())],
+            'scheduled_at' => 'required',
+            'published_at' => 'required',
 			'remark' => 'required|string',
         ];
     }
